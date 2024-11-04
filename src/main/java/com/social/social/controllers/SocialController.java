@@ -8,7 +8,7 @@ public class SocialController {
 
 	@RequestMapping("/social/form")
 	public String form() {
-		return "formCadastro";
+		return "formSocial";
 	}
 
 }
