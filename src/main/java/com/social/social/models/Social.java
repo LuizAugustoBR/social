@@ -59,4 +59,13 @@ public class Social {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+
+	@Override
+	public String toString() {
+		return "Social [id=" + id + ", nome=" + nome + ", local=" + local + ", data=" + data + ", horario=" + horario
+				+ "]";
+	}
+    
+    
+    
 }
