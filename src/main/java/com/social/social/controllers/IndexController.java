@@ -9,7 +9,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public String home() {
 		System.out.println("Chamou o método home");
-		return "home";
+		return "redirect:/social";
 	}
 
 }
