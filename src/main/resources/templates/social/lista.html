@@ -29,7 +29,7 @@
 			<tbody>
 				<tr th:each="s : ${social}">
 					<td th:text="${s.id}">1</td>
-					<td th:text="${s.nome}">Doação de Alimentos</td>
+					<td><a th:href="@{/social/{id}(id=${s.id})}"><span th:text="${s.nome}">Doação de Alimentos</span></a></td>
 					<td th:text="${s.local}">Praça do Ferreira</td>
 					<td th:text="${s.data}">09/11/2024</td>
 					<td th:text="${s.horario}">10:00</td>
