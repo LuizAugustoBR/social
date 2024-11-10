@@ -16,7 +16,7 @@ public class SocialController {
 
 	@RequestMapping("/social/form")
 	public String form() {
-		return "formSocial";
+		return "social/formSocial";
 	}
 	
 	@PostMapping("/social")
@@ -25,7 +25,7 @@ public class SocialController {
 		System.out.println(social);
 		sr.save(social);
 				
-		return "evento-adicionado";
+		return "social/evento-adicionado";
 	}
 
 }
