@@ -58,15 +58,16 @@ public class SocialController {
 
 		md.setViewName("social/detalhes");
 		Social social = opt.get();
-
 		md.addObject("social", social);
+		
+		List<Voluntarios> voluntarios = vr.findBySocial(social);
+		md.addObject("voluntarios", voluntarios);
 
 		return md;
 	}
 	
 	@PostMapping("/{idSocial}")
 	public String salvarVoluntario(@PathVariable Long idSocial, Voluntarios voluntario) {
-		
 		System.out.println("Id do evento: " + idSocial);
 		System.out.println(voluntario);
 		

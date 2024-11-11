@@ -21,16 +21,28 @@
 				<div class="card">
 					<div class="card-content">
 						<span class="card-title">Ação Social</span>
-						<p><strong>Id: </strong><span th:text="${social.id}">1</span></p>
-						<p><strong>Nome: </strong><span th:text="${social.nome}">Doação de Alimentos</span></p>
-						<p><strong>Local: </strong><span th:text="${social.local}">Praça do Ferreira</span></p>
-						<p><strong>Data: </strong><span th:text="${social.data}">09/11/2024</span></p>
-						<p><strong>Horario: </strong><span th:text="${social.horario}">10:00</span></p>
-					</div>					
+						<p>
+							<strong>Id: </strong><span th:text="${social.id}">1</span>
+						</p>
+						<p>
+							<strong>Nome: </strong><span th:text="${social.nome}">Doação
+								de Alimentos</span>
+						</p>
+						<p>
+							<strong>Local: </strong><span th:text="${social.local}">Praça
+								do Ferreira</span>
+						</p>
+						<p>
+							<strong>Data: </strong><span th:text="${social.data}">09/11/2024</span>
+						</p>
+						<p>
+							<strong>Horario: </strong><span th:text="${social.horario}">10:00</span>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col s12">
 				<div class="card">
@@ -38,20 +50,47 @@
 						<span class="card-title">Adicionar Voluntário</span>
 						<form action="" method="post">
 							<div>
-							<label>Nome: </label> <input type="text" name="nome">
+								<label>Nome: </label> <input type="text" name="nome">
 							</div>
 							<div>
-							<label>RG: </label> <input type="text" name="rg">
+								<label>RG: </label> <input type="text" name="rg">
 							</div>
 							<div>
 								<button type="submit" class="btn">Salvar</button>
 								<button type="reset" class="btn">Limpar</button>
 							</div>
 						</form>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col s12">
+				<div class="card">
+					<div class="card-content">
+						<span class="card-title">Voluntários</span>
+						<table class="highlight">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>Rg</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="v : ${voluntarios}">
+									<td th:text="${v.id}">1</td>
+									<td th:text="${v.nome}">Luiz</td>
+									<td th:text="${v.rg}">123</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 </body>
 </html>
