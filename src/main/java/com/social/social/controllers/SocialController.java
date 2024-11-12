@@ -83,5 +83,21 @@ public class SocialController {
 		
 		return "redirect:/social/{idSocial}";
 	}
+	@GetMapping("/{id}/remover")
+	public String apagarEvento(@PathVariable Long id) {
+		
+		Optional<Social> opt = sr.findById(id);
+		
+		if(!opt.isEmpty()) {
+			Social social = opt.get();
+			
+			List<Voluntarios> Voluntarios = vr.findBySocial(social);
+			
+			vr.deleteAll(Voluntarios);
+			sr.delete(social);
+		}
+		
+		return "redirect:/social";
+	}
 
 }

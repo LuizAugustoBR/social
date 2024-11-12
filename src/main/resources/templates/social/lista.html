@@ -5,18 +5,20 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <title>SocialLink</title>
 </head>
 <body>
 	<div th:replace="~{menu :: menu}"></div>
-	
+
 	<div class="container">
 
 
-		<h1>Lista de eventos</h1>
+		<h1>Lista de Projetos</h1>
 
 		<table class="highlight">
-		
+
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -24,15 +26,18 @@
 					<th>Local</th>
 					<th>Data</th>
 					<th>Horario</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="s : ${social}">
 					<td th:text="${s.id}">1</td>
-					<td><a th:href="@{/social/{id}(id=${s.id})}"><span th:text="${s.nome}">Doação de Alimentos</span></a></td>
+					<td><a th:href="@{/social/{id}(id=${s.id})}"><span
+							th:text="${s.nome}">Doação de Alimentos</span></a></td>
 					<td th:text="${s.local}">Praça do Ferreira</td>
 					<td th:text="${s.data}">09/11/2024</td>
 					<td th:text="${s.horario}">10:00</td>
+					<td><a th:href="@{/social/{id}/remover(id=${s.id})}"><i class="material-icons">delete</i></a></td>
 				</tr>
 			</tbody>
 		</table>
