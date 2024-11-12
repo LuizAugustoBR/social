@@ -16,22 +16,26 @@
 
 		<h1>Adicionar Projeto</h1>
 
-		<form action="/social" method="post">
+		<form action="/social" method="post" th:object="${social}">
 
 			<div>
-				 <input type="hidden" name="id" th:value="${social.id}" readonly="readonly">
+				 <input type="hidden" th:field="*{id}" readonly="readonly">
 			</div>
 			<div>
-				<label>Nome:</label> <input type="text" name="nome" th:value="${social.nome}">
+				<label>Nome:</label> <input type="text" th:field="*{nome}">
+				<p th:errors="*{nome}"></p>
 			</div>
 			<div>
-				<label>Local:</label> <input type="text" name="local" th:value="${social.local}">
+				<label>Local:</label> <input type="text" th:field="*{local}">
+				<p th:errors="*{local}"></p>
 			</div>
 			<div>
-				<label>Data:</label> <input type="text" name="data" th:value="${social.data}">
+				<label>Data:</label> <input type="text" th:field="*{data}">
+				<p th:errors="*{data}"></p>
 			</div>
 			<div>
-				<label>Horário:</label> <input type="text" name="horario" th:value="${social.horario}">
+				<label>Horário:</label> <input type="text" th:field="*{horario}">
+				<p th:errors="*{horario}"></p>
 			</div>
 			<div>
 				<button class="waves-effect waves-light btn" type="submit">Salvar</button>

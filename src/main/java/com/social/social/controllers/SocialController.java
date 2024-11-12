@@ -5,16 +5,20 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.social.social.models.Social;
 import com.social.social.models.Voluntarios;
 import com.social.social.repositories.SocialRepository;
 import com.social.social.repositories.VoluntarioRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/social")
@@ -31,10 +35,15 @@ public class SocialController {
 	}
 
 	@PostMapping
-	public String salvar(Social social) {
+	public String salvar(@Valid Social social, BindingResult result, RedirectAttributes attributes) {
+		
+		if(result.hasErrors()) {
+			return form(social);
+		}
 
 		System.out.println(social);
 		sr.save(social);
+		attributes.addFlashAttribute("mensagem", "Projeto salvo com sucesso!");
 
 		return "redirect:/social";
 	}
@@ -84,7 +93,7 @@ public class SocialController {
 		return "redirect:/social/{idSocial}";
 	}
 	@GetMapping("/{id}/remover")
-	public String apagarEvento(@PathVariable Long id) {
+	public String apagarEvento(@PathVariable Long id, RedirectAttributes attributes) {
 		
 		Optional<Social> opt = sr.findById(id);
 		
@@ -95,6 +104,7 @@ public class SocialController {
 			
 			vr.deleteAll(Voluntarios);
 			sr.delete(social);
+			attributes.addFlashAttribute("mensagem", "Projeto removido com sucesso");
 		}
 		
 		return "redirect:/social";
