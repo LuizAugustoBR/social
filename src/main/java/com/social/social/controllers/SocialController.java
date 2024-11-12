@@ -26,17 +26,17 @@ public class SocialController {
 	private VoluntarioRepository vr;
 
 	@GetMapping("/form")
-	public String form() {
+	public String form(Social social) {
 		return "social/formSocial";
 	}
 
 	@PostMapping
-	public String adicionar(Social social) {
+	public String salvar(Social social) {
 
 		System.out.println(social);
 		sr.save(social);
 
-		return "social/evento-adicionado";
+		return "redirect:/social";
 	}
 
 	@GetMapping
@@ -99,5 +99,22 @@ public class SocialController {
 		
 		return "redirect:/social";
 	}
-
+	
+	@GetMapping("/{id}/selecionar")
+	public ModelAndView selecionarSocial(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Social> opt = sr.findById(id);
+		if(opt.isEmpty()) {
+			md.setViewName("redirect:/social");
+			return md;
+		}
+		
+		Social social = opt.get();
+		md.setViewName("social/formSocial");
+		md.addObject("social", social);
+		
+		return md;
+		
+	}
+	
 }

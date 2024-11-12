@@ -19,16 +19,19 @@
 		<form action="/social" method="post">
 
 			<div>
-				<label>Nome:</label> <input type="text" name="nome">
+				 <input type="hidden" name="id" th:value="${social.id}" readonly="readonly">
 			</div>
 			<div>
-				<label>Local:</label> <input type="text" name="local">
+				<label>Nome:</label> <input type="text" name="nome" th:value="${social.nome}">
 			</div>
 			<div>
-				<label>Data:</label> <input type="text" name="data">
+				<label>Local:</label> <input type="text" name="local" th:value="${social.local}">
 			</div>
 			<div>
-				<label>Horário:</label> <input type="text" name="horario">
+				<label>Data:</label> <input type="text" name="data" th:value="${social.data}">
+			</div>
+			<div>
+				<label>Horário:</label> <input type="text" name="horario" th:value="${social.horario}">
 			</div>
 			<div>
 				<button class="waves-effect waves-light btn" type="submit">Salvar</button>

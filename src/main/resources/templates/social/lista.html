@@ -37,7 +37,10 @@
 					<td th:text="${s.local}">Praça do Ferreira</td>
 					<td th:text="${s.data}">09/11/2024</td>
 					<td th:text="${s.horario}">10:00</td>
-					<td><a th:href="@{/social/{id}/remover(id=${s.id})}"><i class="material-icons">delete</i></a></td>
+					<td>
+						<a th:href="@{/social/{id}/selecionar(id=${s.id})}"><i class="material-icons">edit</i></a>
+						<a th:href="@{/social/{id}/remover(id=${s.id})}"><i class="material-icons">delete</i></a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
